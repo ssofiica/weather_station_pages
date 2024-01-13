@@ -3,3 +3,12 @@
     margin-left: auto;
     margin-right: auto;
 }
+.link{
+    text-decoration: none;
+    color:rgb(40, 40, 40);
+    font-weight: 400;
+    padding-top: 6px;
+}
+.link:hover{
+    color:rgb(40, 40, 40);
+}
