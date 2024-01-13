@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { useEffect } from "react";
+import {useNavigate} from "react-router-dom";
 import { Button, Card } from 'react-bootstrap'
 import './PhenomCard.css'
 import image1 from './1.png'
@@ -21,11 +22,16 @@ interface Props {
 }
 
 const PhenomCard: FC<Props> = (props) => {
+    const navigate = useNavigate();
     useEffect(() => {
         console.log(props)
         console.log(props.data)
       }, []);
     
+    const handleButtonClick = () => {
+        navigate(`/weather_station_pages/phenomens/${props.data.phenom_id}/`); // замените 1 на нужный вам id
+    }
+
     return(
     <div className="col">
     <Card className="phenom-card px-3 py-1 mb-2">
@@ -36,8 +42,9 @@ const PhenomCard: FC<Props> = (props) => {
             <div className="phenom-title ps-1">
                 <Card.Title>{props.data.phenom_name}</Card.Title>
             </div>
-            <Button className="card-button me-4 align-self-center" href={"phenomens/" + props.data.phenom_id} target="_blank" variant="primary">Подробнее</Button>
-            <button className="btn btn-outline-danger align-self-center">Удалить</button>
+            <Button className="card-button me-4 align-self-center" target="_self" onClick={handleButtonClick}>
+                Подробнее
+            </Button>
         </Card.Body>
     </Card>
     </div>

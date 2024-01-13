@@ -13,10 +13,10 @@ interface Phenom {
   description: string;
 }
 
-
 const DetailsPage: FC = () => {
     const {id} = useParams()
     const [phenom, setPhenom] = useState<Phenom>({phenom_name: '', phenom_id: 0, image: '', unit: '', description: ''});
+    
     useEffect(() => {
         fetch(`/api/phenomens/${id}/`)
           .then((response) => response.json())
@@ -25,8 +25,9 @@ const DetailsPage: FC = () => {
             console.log(phenom)})
           .catch((error) => {
             if (typeof id === 'string') {
-              console.log(phenomens[parseInt(id)]);
-              setPhenom(phenomens[parseInt(id)]);
+              console.log(parseInt(id))
+              console.log(phenomens[parseInt(id)-1]);
+              setPhenom(phenomens[parseInt(id)-1]);
             } else {
               console.log('id is undefined');
             }
@@ -46,7 +47,7 @@ const DetailsPage: FC = () => {
             <a href="/weather_station_pages/phenomens">Назад</a>
         </div>
         <div className="d-card">
-            <div className="im"><img className="d-image" src={image} alt=""/></div>
+            <div className="im"><img className="d-image" src={phenom.image} alt=""/></div>
             <span className="text">
                 <p>{phenom.phenom_name}</p>
                 <h5>{phenom.description }</h5>
