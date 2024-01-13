@@ -29,7 +29,7 @@ const PhenomCard: FC<Props> = (props) => {
       }, []);
     
     const handleButtonClick = () => {
-        navigate(`/weather_station_pages/phenomens/${props.data.phenom_id}/`); // замените 1 на нужный вам id
+        navigate(`/weather_station_pages/phenomens/${props.data.phenom_id}/`);
     }
 
     return(

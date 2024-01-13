@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import image from '../components/card/1.png'
+import { useNavigate, useParams } from "react-router-dom";
+import { Button } from 'react-bootstrap'
 import './detail.css'
 import Breadcrumbs, { BreadcrumbLink } from '../components/breadcrumbs/bread';
 import { phenomens } from '../mockData'
@@ -14,7 +14,8 @@ interface Phenom {
 }
 
 const DetailsPage: FC = () => {
-    const {id} = useParams()
+    const navigate = useNavigate();
+    const {id} = useParams();
     const [phenom, setPhenom] = useState<Phenom>({phenom_name: '', phenom_id: 0, image: '', unit: '', description: ''});
     
     useEffect(() => {
@@ -39,13 +40,17 @@ const DetailsPage: FC = () => {
         { label: 'Природные явления', url: '/phenomens.' },
         { label: phenom.phenom_name || '', url: `/phenomens/${id}` },
       ];
+    
+    const handleButtonClick = () => {
+        navigate('/weather_station_pages/phenomens/');
+    }
 
     return(
     <div className="detail-space">
         <Breadcrumbs links={breadcrumbsLinks} />
-        <div className="back-btn my-2 ms-1">
-            <a href="/weather_station_pages/phenomens">Назад</a>
-        </div>
+        <Button className="back-btn my-2 ms-1" onClick={handleButtonClick}>
+          Назад
+        </Button>
         <div className="d-card">
             <div className="im"><img className="d-image" src={phenom.image} alt=""/></div>
             <span className="text">
