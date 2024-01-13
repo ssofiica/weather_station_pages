@@ -29,14 +29,12 @@ const Space: FC = () => {
             const response = await fetch(`/api/phenomens/?value=${searchValue}`);
             const jsonData = await response.json();
             setPhenoms(jsonData.phenomens);
-          } catch (error) {
-            console.error('Error fetching data:', error);
+          } catch (_) {
+            const filteredPhenom = phenoms.filter((phenom) => phenom.phenom_name === searchValue);
+            console.log(filteredPhenom)
+            setPhenoms(filteredPhenom);
+            console.log(phenoms)
           }
-    }
-    const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault();
-        console.log(searchValue)
-        searchHandler();
     }
 
     const breadcrumbsLinks: BreadcrumbLink[] = [
@@ -45,9 +43,9 @@ const Space: FC = () => {
 
     return(
         <div className="space">
-            <form onSubmit={handleSubmit}>
+            <form>
                 <input value={searchValue} placeholder={"Введите название"} onChange={(event) => {setSearchValue(event.target.value)}}/>
-                <button className="search-button" type="submit">Найти</button>
+                <button className="search-button" type="button" onClick={searchHandler}>Найти</button>
             </form>
             <Breadcrumbs links={breadcrumbsLinks} />
             <div className="cards container px-0">
