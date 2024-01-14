@@ -7,8 +7,21 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    margin-right: 60px;
-}
+    margin-right: 1.5%;  
+};
+@media (max-width: 330px) {
+    .phenom-card{
+        width: 95%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+};
+@media (max-width: 560px) {
+    .phenom-card{
+        margin-left: auto;
+        margin-right: auto;
+    } 
+};
 .phenom-image{
     margin-top: 16px;
     margin-left: auto;

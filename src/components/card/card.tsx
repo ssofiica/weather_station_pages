@@ -33,7 +33,7 @@ const PhenomCard: FC<Props> = (props) => {
     }
 
     return(
-    <div className="col">
+    // <div className="col">
     <Card className="phenom-card px-3 py-1 mb-2">
         {props.data.image ? <Card.Img className="phenom-image" src={props.data.image} height={120} width={198}/>
         : <Card.Img className="phenom-image" src={images[props.data.phenom_id - 1]} height={120} width={198}/>
@@ -47,7 +47,7 @@ const PhenomCard: FC<Props> = (props) => {
             </Button>
         </Card.Body>
     </Card>
-    </div>
+    //</div>
     )
 }
 

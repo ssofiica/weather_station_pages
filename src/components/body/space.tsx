@@ -48,12 +48,13 @@ const Space: FC = () => {
                 <button className="search-button" type="button" onClick={searchHandler}>Найти</button>
             </form>
             <Breadcrumbs links={breadcrumbsLinks} />
-            <div className="cards container px-0">
-                <div className="row row-cols-4">
+            {/* <div className="cards container px-0"> */}
+            <div className="card-wrapper">
+                {/* <div className="row row-cols-4"></div> */}
                 {phenoms.map((item) => (
                     <PhenomCard data={item}/>
                 ))}
-                </div>
+                
             </div>
         </div>
     )
